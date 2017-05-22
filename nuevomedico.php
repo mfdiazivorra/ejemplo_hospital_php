@@ -1,7 +1,7 @@
 <?php include 'header.php'; ?>
 <div class="container">
   <div class="row">
-    <form class="form-horizontal" action="nuevomedico2.php" method="post">
+    <form class="form-horizontal" action="nuevomedico2.php" method="post" enctype="multipart/form-data">
       <fieldset>
         <legend>Nuevo Médico</legend>
 
@@ -33,6 +33,13 @@
           <label for="Antiguedad" class="col-lg-2 control-label">Antigüedad</label>
           <div class="col-lg-10">
             <input type="text" class="form-control" id="Antiguedad" name="Antiguedad">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Antiguedad" class="col-lg-2 control-label">Imagen</label>
+          <div class="col-lg-10">
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="hidden" value="Upload Image" name="submit">
           </div>
         </div>
         <div class="form-group">
