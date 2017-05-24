@@ -14,6 +14,7 @@
             <table class="table table-striped table-hover table-bordered">
               <thead>
                 <tr>
+                  <th>Imagen</th>
                   <th>Número de Colegiado</th>
                   <th>Nombre</th>
                   <th>Apellido</th>
@@ -29,6 +30,16 @@
              while($row = $result->fetch_assoc()) {
                ?>
                 <tr>
+                  <td style="vertical-align:middle">
+                    <?php
+                      if (file_exists('res/img/' . $row["Num_Colegiado"] . '.jpg')){
+
+                    ?>
+                      <center><img class="portrait" src="res/img/<?php echo $row["Num_Colegiado"] . ".jpg" ?>" alt="<?php echo $row["Nom_Medico"] ?>"></center>
+                    <?php
+                      }
+                    ?>
+                  </td>
                   <td style="vertical-align:middle"><?php echo $row["Num_Colegiado"] ?></td>
                   <td style="vertical-align:middle"><?php echo $row["Nom_Medico"] ?></td>
                   <td style="vertical-align:middle"><?php echo $row["Apell_Medico"] ?></td>

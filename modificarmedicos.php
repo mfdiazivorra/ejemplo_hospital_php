@@ -21,6 +21,7 @@ if (!isset($_REQUEST['cod']) || (!isset($_SESSION['usuario']))){
             <table class="table table-striped table-hover table-bordered">
               <thead>
                 <tr>
+                  <th>Imagen</th>
                   <th>Núm Colegiado</th>
                   <th>Nombre</th>
                   <th>Apellido</th>
@@ -32,9 +33,11 @@ if (!isset($_REQUEST['cod']) || (!isset($_SESSION['usuario']))){
             <?php
              while($row = $result->fetch_assoc()) {
                ?>
-              <form class="form-group" action="modificarmedicos2.php" method="post">
+              <form class="form-group" action="modificarmedicos2.php" method="post" enctype="multipart/form-data">
 
                 <tr>
+                  <td style="vertical-align:middle"><input type="file" name="fileToUpload" id="fileToUpload">
+                  <input type="hidden" value="Upload Image" name="submit"></td>
                   <td style="vertical-align:middle"><div><?php echo $row["Num_Colegiado"] ?></div> <input type="hidden" name="Num_Colegiado" value="<?php echo $row["Num_Colegiado"] ?>" class="disabled"> </td>
                   <td style="vertical-align:middle"> <input class="form-control" type="text" name="Nom_Medico" value="<?php echo $row["Nom_Medico"] ?>"> </td>
                   <td style="vertical-align:middle"> <input class="form-control" type="text" name="Apell_Medico" value="<?php echo $row["Apell_Medico"] ?>"> </td>

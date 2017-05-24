@@ -16,6 +16,8 @@
     )";
   mysqli_query($conexion, $query);
 
+  // echo $query;//testing
+
   // $target_dir = "res/img/";
   // $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
   // $uploadOk = 1;
@@ -47,10 +49,11 @@
       }
   }
   // Check if file already exists
-  if (file_exists($target_file)) {
-      echo "Sorry, file already exists.";
-      $uploadOk = 0;
-  }
+  // if (file_exists($target_file)) {
+  //     echo "Sorry, file already exists.";
+  //     $uploadOk = 0;
+  // }
+
   // Check file size
   if ($_FILES["fileToUpload"]["size"] > 500000) {
       echo "Sorry, your file is too large.";
@@ -84,8 +87,8 @@
   // print_r($_FILES["fileToUpload"]);
   // echo "<br>";
   // print_r($_FILES["fileToUpload"]);
-  print_r($_FILES["fileToUpload"]["tmp_name"]);
+  // print_r($_FILES["fileToUpload"]["tmp_name"]);
 
 
-  // header ("Location: medicos.php");
+  header ("Location: medicos.php");
 ?>

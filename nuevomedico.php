@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="Antiguedad" class="col-lg-2 control-label">Imagen</label>
+          <label for="fileToUpload" class="col-lg-2 control-label">Imagen</label>
           <div class="col-lg-10">
             <input type="file" name="fileToUpload" id="fileToUpload">
             <input type="hidden" value="Upload Image" name="submit">
