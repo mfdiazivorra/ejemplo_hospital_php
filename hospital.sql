@@ -13,10 +13,29 @@
 
 
 -- Volcando estructura de base de datos para hospital
+DROP DATABASE IF EXISTS `hospital`;
 CREATE DATABASE IF NOT EXISTS `hospital` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
 USE `hospital`;
 
+-- Volcando estructura para tabla hospital.frontpage_cards
+DROP TABLE IF EXISTS `frontpage_cards`;
+CREATE TABLE IF NOT EXISTS `frontpage_cards` (
+  `cod_card` int(1) NOT NULL,
+  `imagen` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `h3` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `p` varchar(400) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Volcando datos para la tabla hospital.frontpage_cards: 0 rows
+/*!40000 ALTER TABLE `frontpage_cards` DISABLE KEYS */;
+INSERT INTO `frontpage_cards` (`cod_card`, `imagen`, `h3`, `p`) VALUES
+	(1, 'res/img/12345.jpg', 'Lorem', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non purus quis orci venenatis dignissim. Integer rutrum est non lacus varius, ut hendrerit tellus gravida. Maecenas sodales, odio id pharetra gravida, lectus libero egestas lorem, vitae pretium leo lectus a augue. '),
+	(2, 'res/img/12346.jpg', 'Ipsum', 'Morbi eget lacinia augue, a maximus dolor. Suspendisse eu placerat massa. Cras ullamcorper est eu tortor ultricies, et volutpat felis vestibulum. Pellentesque ornare sollicitudin malesuada. Quisque commodo accumsan libero, sed suscipit eros. Maecenas sed nibh eget neque blandit congue.'),
+	(3, 'res/img/12347.jpg', 'Dolor', 'In hac habitasse platea dictumst. Quisque nec laoreet erat, eu sodales erat. Donec malesuada mi sapien, nec iaculis mauris efficitur consequat. Nam et auctor mi, in aliquam risus. Sed vitae neque turpis. Aliquam erat volutpat. Ut vel consequat turpis, eget dignissim arcu. Etiam elementum nisi justo, sed commodo mi placerat et.');
+/*!40000 ALTER TABLE `frontpage_cards` ENABLE KEYS */;
+
 -- Volcando estructura para tabla hospital.ingresos
+DROP TABLE IF EXISTS `ingresos`;
 CREATE TABLE IF NOT EXISTS `ingresos` (
   `Num_Ingreso` int(10) NOT NULL,
   `FIngreso` datetime DEFAULT NULL,
@@ -35,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `ingresos` (
   CONSTRAINT `ingresos_ibfk_2` FOREIGN KEY (`Num_Colegiado`) REFERENCES `medicos` (`Num_Colegiado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla hospital.ingresos: ~8 rows (aproximadamente)
+-- Volcando datos para la tabla hospital.ingresos: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `ingresos` DISABLE KEYS */;
 INSERT INTO `ingresos` (`Num_Ingreso`, `FIngreso`, `FAlta`, `Planta`, `Cama`, `Alergico`, `Diagnostico`, `Coste`, `Num_Historial`, `Num_Colegiado`) VALUES
 	(1, '2002-01-27 00:00:00', '2002-02-20 00:00:00', '2', '121', b'0', 'Amputación', 600.0000, '12342-F', '1010'),
@@ -49,6 +68,7 @@ INSERT INTO `ingresos` (`Num_Ingreso`, `FIngreso`, `FAlta`, `Planta`, `Cama`, `A
 /*!40000 ALTER TABLE `ingresos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla hospital.medicos
+DROP TABLE IF EXISTS `medicos`;
 CREATE TABLE IF NOT EXISTS `medicos` (
   `Num_Colegiado` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
   `Nom_Medico` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -58,10 +78,11 @@ CREATE TABLE IF NOT EXISTS `medicos` (
   PRIMARY KEY (`Num_Colegiado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla hospital.medicos: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla hospital.medicos: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `medicos` DISABLE KEYS */;
 INSERT INTO `medicos` (`Num_Colegiado`, `Nom_Medico`, `Apell_Medico`, `Especialidad`, `Antiguedad`) VALUES
-	('1010', 'Juana', 'Moreno Navarro', 'Cirujano', 3),
+	('1010', 'Juana', 'Morenos Navarro', 'Cirujano', 3),
+	('1111', 'asd', 'asd', 'dsa', 3),
 	('1231', 'Sebastián', 'Esteban Muñoz', 'Psiquiatra', 5),
 	('2020', 'Antonio', 'Vidal Torres', 'Psiquiatra', 2),
 	('2121', 'Eva', 'Pons Prats', 'Radiólogo', 3),
@@ -69,6 +90,7 @@ INSERT INTO `medicos` (`Num_Colegiado`, `Nom_Medico`, `Apell_Medico`, `Especiali
 /*!40000 ALTER TABLE `medicos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla hospital.pacientes
+DROP TABLE IF EXISTS `pacientes`;
 CREATE TABLE IF NOT EXISTS `pacientes` (
   `Num_Historial` varchar(9) COLLATE utf8_unicode_ci NOT NULL,
   `Nom_Paciente` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -80,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
   PRIMARY KEY (`Num_Historial`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla hospital.pacientes: ~8 rows (aproximadamente)
+-- Volcando datos para la tabla hospital.pacientes: ~9 rows (aproximadamente)
 /*!40000 ALTER TABLE `pacientes` DISABLE KEYS */;
 INSERT INTO `pacientes` (`Num_Historial`, `Nom_Paciente`, `Apell_Paciente`, `FNacimiento`, `Domicilio`, `Poblacion`, `Sexo`) VALUES
 	('12127-B', 'Olga', 'Navarrete Puch', '1980-05-23 00:00:00', 'Avda. Madrid, 6', 'Alicante', 'M'),
@@ -88,12 +110,14 @@ INSERT INTO `pacientes` (`Num_Historial`, `Nom_Paciente`, `Apell_Paciente`, `FNa
 	('12155-B', 'test', 'test', '2017-05-25 00:00:00', 'test', 'test', 'H'),
 	('12342-F', 'Enrique', 'Morales López', '1975-01-03 00:00:00', 'Pº de la Castellana, 133', 'Madrid', 'H'),
 	('13131-P', 'Jaime', 'Flores ', '1970-12-15 00:00:00', 'c/ Trujillo, 13', 'Alicante', 'H'),
+	('14444-B', 'dasdf', 'sdfsdfdsf', '2017-05-17 00:00:00', 'cxvxcv', 'xcvxcv', 'H'),
 	('15343-D', 'Rogelio', 'Martínez Lozano', '1956-04-01 00:00:00', 'c/ Versalles, 17', 'Fuenlabrada', 'H'),
 	('32154-I', 'Carlos', 'Jimenez Blanco', '1955-12-15 00:00:00', 'c/ Gran Vía, 34', 'Madrid', 'H'),
 	('52140-K', 'Mónica', 'Armengol Prats', '1970-06-21 00:00:00', 'c/ Doce de Octubre, 25', 'Madrid', 'M');
 /*!40000 ALTER TABLE `pacientes` ENABLE KEYS */;
 
 -- Volcando estructura para tabla hospital.personal_administrativo
+DROP TABLE IF EXISTS `personal_administrativo`;
 CREATE TABLE IF NOT EXISTS `personal_administrativo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) COLLATE utf8_unicode_ci NOT NULL,

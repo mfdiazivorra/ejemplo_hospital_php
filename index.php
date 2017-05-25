@@ -11,6 +11,32 @@
         </div>
       </div>
       <div class="row">
+        <?php
+          require_once 'conexion.php';
+
+          $sql = "SELECT cod_card, imagen, h3, p FROM frontpage_cards;";
+          $result = $conexion->query($sql);
+
+          if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+
+        ?>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <img src="<?php echo $row["imagen"] ?>" alt="imagen <?php echo $row["cod_card"] ?>">
+            <div class="caption">
+              <h3><?php echo $row["h3"] ?></h3>
+              <p><?php echo $row["p"] ?></p>
+            </div>
+          </div>
+        </div>
+        <?php
+            }
+          }
+        ?>
+
+      </div>
+      <div class="row">
         <div class="panel panel-primary col-lg-6">
           <div class="panel-heading">
             <h3 class="panel-title">Información Adicional</h3>
