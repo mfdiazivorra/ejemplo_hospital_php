@@ -7,7 +7,7 @@
   }
   require_once 'conexion.php';
   $query = "DELETE FROM medicos WHERE Num_Colegiado = '" . $_REQUEST['cod'] . "'";
-  mysqli_query($conexion, $query);
+  if (mysqli_query($conexion, $query)) unlink('res/img/' . $_REQUEST['cod'] . '.jpg');
   mysqli_close($conexion);
   header ("Location: medicos.php");
 ?>

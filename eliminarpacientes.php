@@ -7,7 +7,7 @@
   }
   require_once 'conexion.php';
   $query = "DELETE FROM pacientes WHERE Num_Historial = '" . $_REQUEST['cod'] . "'";
-  mysqli_query($conexion, $query);
+  if (mysqli_query($conexion, $query)) unlink('res/img/' . $_REQUEST['cod'] . '.jpg');
   mysqli_close($conexion);
   header ("Location: pacientes.php");
 ?>
