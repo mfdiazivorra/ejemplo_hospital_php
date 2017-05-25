@@ -20,11 +20,12 @@ USE `hospital`;
 -- Volcando estructura para tabla hospital.frontpage_cards
 DROP TABLE IF EXISTS `frontpage_cards`;
 CREATE TABLE IF NOT EXISTS `frontpage_cards` (
-  `cod_card` int(1) NOT NULL,
+  `cod_card` int(32) unsigned NOT NULL AUTO_INCREMENT,
   `imagen` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `h3` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `p` varchar(400) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `p` varchar(400) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`cod_card`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Volcando datos para la tabla hospital.frontpage_cards: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `frontpage_cards` DISABLE KEYS */;
@@ -54,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `ingresos` (
   CONSTRAINT `ingresos_ibfk_2` FOREIGN KEY (`Num_Colegiado`) REFERENCES `medicos` (`Num_Colegiado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla hospital.ingresos: ~7 rows (aproximadamente)
+-- Volcando datos para la tabla hospital.ingresos: ~8 rows (aproximadamente)
 /*!40000 ALTER TABLE `ingresos` DISABLE KEYS */;
 INSERT INTO `ingresos` (`Num_Ingreso`, `FIngreso`, `FAlta`, `Planta`, `Cama`, `Alergico`, `Diagnostico`, `Coste`, `Num_Historial`, `Num_Colegiado`) VALUES
 	(1, '2002-01-27 00:00:00', '2002-02-20 00:00:00', '2', '121', b'0', 'Amputación', 600.0000, '12342-F', '1010'),

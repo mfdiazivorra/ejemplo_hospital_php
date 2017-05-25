@@ -23,7 +23,7 @@
         ?>
         <div class="col-sm-6 col-md-4">
           <div class="thumbnail">
-            <img src="<?php echo $row["imagen"] ?>" alt="imagen <?php echo $row["cod_card"] ?>">
+            <img src="<?php echo $row["imagen"] ?>" alt="<?php echo "imagen de " . $row["h3"] ?>">
             <div class="caption">
               <h3><?php echo $row["h3"] ?></h3>
               <p><?php echo $row["p"] ?></p>

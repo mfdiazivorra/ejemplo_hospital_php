@@ -24,12 +24,16 @@
             <li><a href="pacientes.php">Pacientes</a></li>
             <li><a href="ingresos.php">Ingresos</a></li>
             <li><a href="medicos.php">Médicos</a></li>
+            <?php
+              session_start();
+              if (isset($_SESSION['usuario']))
+                echo '<li><a href="paneldecontrol.php">Panel de Control</a></li>';
+            ?>
           </ul>
           <!-- <a class="navbar-brand navbar-right bienvenido" href="index.php">Healthstone Community Hospital</a> -->
           <!-- falta solucionar el estilo del mensaje de bienvenido -->
           <ul class="nav navbar-nav navbar-right">
             <?php
-              session_start();
               if (!isset($_SESSION['usuario'])) {
                 echo '<li><a href="login.php">Login</a></li>';
               } else {
