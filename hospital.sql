@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS `frontpage_cards` (
   `imagen` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `h3` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `p` varchar(400) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla hospital.frontpage_cards: 0 rows
+-- Volcando datos para la tabla hospital.frontpage_cards: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `frontpage_cards` DISABLE KEYS */;
 INSERT INTO `frontpage_cards` (`cod_card`, `imagen`, `h3`, `p`) VALUES
 	(1, 'res/img/12345.jpg', 'Lorem', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non purus quis orci venenatis dignissim. Integer rutrum est non lacus varius, ut hendrerit tellus gravida. Maecenas sodales, odio id pharetra gravida, lectus libero egestas lorem, vitae pretium leo lectus a augue. '),
